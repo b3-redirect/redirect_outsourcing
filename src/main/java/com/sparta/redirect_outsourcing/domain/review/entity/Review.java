@@ -35,9 +35,10 @@ public class Review extends TimeStampEntity {
     @JoinColumn(name = "restaurants_id")
     private Restaurant restaurant;
 
-    public Review(Float rating, String comment) {
+    public Review(Float rating, String comment , User user) {
         this.rating = rating;
         this.comment = comment;
+        this.user = user;
         this.likeCount = 0;
     }
 

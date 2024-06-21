@@ -1,5 +1,6 @@
 package com.sparta.redirect_outsourcing.domain.review.controller;
 
+import com.sparta.redirect_outsourcing.auth.UserDetailsImpl;
 import com.sparta.redirect_outsourcing.common.DataResponseDto;
 import com.sparta.redirect_outsourcing.common.MessageResponseDto;
 import com.sparta.redirect_outsourcing.common.ResponseCodeEnum;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +24,11 @@ public class ReviewController {
     private final ReviewService reviewService;
 
     @PostMapping("/restaurants/reviews")
-    public ResponseEntity<DataResponseDto<ReviewResponseDto>> createReview(@RequestBody ReviewRequestDto requestDto){
-        ReviewResponseDto responseDto = reviewService.createReview(requestDto);
+    public ResponseEntity<DataResponseDto<ReviewResponseDto>> createReview(
+            @RequestBody ReviewRequestDto requestDto,
+            @AuthenticationPrincipal UserDetailsImpl userDetails
+    ){
+        ReviewResponseDto responseDto = reviewService.createReview(requestDto,userDetails);
         return ResponseUtils.of(HttpStatus.OK, "리뷰 작성 성공",responseDto);
     }
 
