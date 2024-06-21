@@ -1,10 +1,15 @@
 package com.sparta.redirect_outsourcing.domain.restaurant.entity;
 
 import com.sparta.redirect_outsourcing.common.TimeStampEntity;
+import com.sparta.redirect_outsourcing.domain.menu.entity.Menu;
+import com.sparta.redirect_outsourcing.domain.review.entity.Review;
 import com.sparta.redirect_outsourcing.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Table(name = "restaurants")
@@ -15,11 +20,11 @@ public class Restaurant extends TimeStampEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToMany(mappedBy = "restaurant_id",cascade = CascadeType.ALL,orphanRemoval = true)
-//    private List<Review> reviews = new ArrayList<>();
-//
-//    @OneToMany(mappedBy = "restaurant_id",cascade = CascadeType.ALL,orphanRemoval = true)
-//    private List<Menu> menus = new ArrayList<>();
+    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Menu> menus = new ArrayList<>();
 
     @Column(nullable = false)
     private String name;

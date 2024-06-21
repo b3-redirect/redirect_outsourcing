@@ -15,7 +15,7 @@ import lombok.Setter;
 @Table(name = "follows")
 public class Follow extends TimeStampEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

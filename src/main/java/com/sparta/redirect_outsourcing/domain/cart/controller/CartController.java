@@ -51,7 +51,7 @@ public class CartController {
         return ResponseUtils.of(HttpStatus.OK, "Cart item updated successfully", responseDto);
     }
 
-    // 장바구니 삭제
+     장바구니 삭제 - 메뉴 만들어지면 사용 가능
     @DeleteMapping("/carts")
     public ResponseEntity<DataResponseDto<Void>> deleteCartItems(
         @RequestParam List<Long> menuIds

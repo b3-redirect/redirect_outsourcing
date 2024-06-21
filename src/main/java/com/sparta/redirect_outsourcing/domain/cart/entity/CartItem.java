@@ -28,6 +28,10 @@ public class CartItem extends TimeStampEntity {
     @JoinColumn(name = "carts_id", nullable = false)
     private Cart cart;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menus_id", nullable = false)
+    private Menu menu;
+
     public CartItem(Cart cart /*Menu menu*/, Long quantity, Long quantityPrice) {
         this.cart = cart;
 //        this.menu = menu;
@@ -41,5 +45,4 @@ public class CartItem extends TimeStampEntity {
         this.quantity = quantity;
         this.quantityPrice = quantityPrice;
     }
-
 }

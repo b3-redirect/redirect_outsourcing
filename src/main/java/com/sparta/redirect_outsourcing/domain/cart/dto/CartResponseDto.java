@@ -12,7 +12,7 @@ public class CartResponseDto {
 
     public static CartResponseDto of(Cart cart) {
         return CartResponseDto.builder()
-            .userId(cart.getUserId())
+            .userId(cart.getUsersId())
             .build();
     }
 

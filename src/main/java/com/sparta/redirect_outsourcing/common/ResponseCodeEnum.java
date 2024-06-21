@@ -19,7 +19,9 @@ public enum ResponseCodeEnum {
     REVIEW_NOT_FOUND(HttpStatus.NOT_FOUND,"리뷰를 찾을 수 없습니다."),
     REVIEW_OVER_RATING(HttpStatus.BAD_REQUEST,"평점은 1에서5 사이 만 가능합니다."),
 
-
+    // 장바구니
+    CART_NOT_FOUND(HttpStatus.NOT_FOUND, "장바구니를 찾을 수 없습니다."),
+    CART_ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "장바구니 목록을 찾을 수 없습니다.")
     ;
     private final HttpStatus httpStatus;
     private final String message;
