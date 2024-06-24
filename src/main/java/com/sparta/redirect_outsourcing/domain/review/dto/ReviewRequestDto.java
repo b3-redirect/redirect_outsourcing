@@ -10,4 +10,6 @@ public class ReviewRequestDto {
     private Float rating;
     @NotBlank(message = "리뷰를 입력해주세요.")
     private String comment;
+
+    private Long restaurantId;
 }
